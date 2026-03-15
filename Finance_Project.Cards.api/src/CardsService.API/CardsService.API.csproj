@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.1" />
+    <PackageReference Include="Scalar.AspNetCore" Version="1.2.60" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CardsService.Application\CardsService.Application.csproj" />
+    <ProjectReference Include="..\CardsService.Infrastructure\CardsService.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
