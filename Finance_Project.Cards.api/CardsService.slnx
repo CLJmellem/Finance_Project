@@ -1,0 +1,16 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/src/">
+    <Project Path="src/CardsService.API/CardsService.API.csproj" />
+    <Project Path="src/CardsService.Application/CardsService.Application.csproj" />
+    <Project Path="src/CardsService.Domain/CardsService.Domain.csproj" />
+    <Project Path="src/CardsService.Infrastructure/CardsService.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="src/CardsService.Tests/CardsService.Tests/CardsService.Tests.csproj" />
+  </Folder>
+</Solution>
