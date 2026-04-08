@@ -1,0 +1,21 @@
+<Solution>
+  <Folder Name="/Api/">
+    <Project Path="Auth.Api/Auth.Api.csproj" Id="a039d664-621b-4cf6-b641-f8484e19bfe2">
+      <BuildDependency Project="Auth.Domain/Auth.Domain.csproj" />
+    </Project>
+  </Folder>
+  <Folder Name="/Application/">
+    <Project Path="Auth.Application/Auth.Application.csproj" Id="85300e08-b53d-41c5-9dc0-e5514803bb4d" />
+  </Folder>
+  <Folder Name="/Domain/">
+    <Project Path="Auth.Domain/Auth.Domain.csproj" Id="396dca54-1128-46cf-a3bd-84c1e17e5a40" />
+  </Folder>
+  <Folder Name="/Infrastructure/">
+    <Project Path="Auth.Infrastructure/Auth.Infrastructure.csproj" Id="7946e4dd-cde7-4fd3-b9a7-6e77960836d3">
+      <BuildDependency Project="Auth.Application/Auth.Application.csproj" />
+    </Project>
+  </Folder>
+  <Folder Name="/Test/">
+    <Project Path="Auth.Test/Auth.Test.csproj" Id="71ec9df2-9c4f-42bf-8cd2-0bd810919625" />
+  </Folder>
+</Solution>
