@@ -35,7 +35,7 @@ Todas as requisicoes passam pelo Gateway, que encaminha para o servico correto v
 |------|----------------|---------------|------|
 | `/api/cards/{**catch-all}` | Cards API | `localhost:65006` | Bearer (obrigatorio) |
 | `/api/transactions/{**catch-all}` | Transactions API | `localhost:65010` | Bearer (obrigatorio) |
-| `/api/v1/Authentication/{**catch-all}` | Auth API | `localhost:7035` | Anonimo |
+| `/api/v1/Authentication/{**catch-all}` | Auth API | `localhost:65002` | Anonimo |
 
 > O token JWT e encaminhado automaticamente pelo YARP para os servicos downstream.
 
@@ -147,4 +147,4 @@ dotnet run
 | API Gateway | `65000` | `65001` |
 | Cards API | `65006` | `65007` |
 | Transactions API | `65010` | `65011` |
-| Auth API | `7035` | `5145` |
+| Auth API | `65002` | `65003` |

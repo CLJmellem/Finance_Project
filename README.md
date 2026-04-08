@@ -16,7 +16,7 @@ O sistema permite que usuários cadastrem seus cartões e registrem transações
 
 | Serviço | Status | Repositório / Pasta |
 |---------|--------|---------------------|
-| Auth API | ✅ Funcional | Repositório separado |
+| Auth API | ✅ Funcional | `Finance_Project.Authentication.api/` |
 | Cards API | ✅ Funcional | `Finance_Project.Cards.api/` |
 | Transactions API | ✅ Funcional | `Finance_Project.Transactions.api/` |
 | API Gateway + Circuit Breaker | ✅ Funcional | `Finance_Project.ApiGateway/` |
@@ -51,16 +51,18 @@ O token é emitido pela Auth API. Roles disponíveis:
 
 ## Auth API
 
-> Repositório separado — já funcional.
+> `Finance_Project.Authentication.api/` — funcional.
 
 Responsável por registro, login, renovação e revogação de tokens JWT.
 
 | Método | Rota | Auth | Descrição |
 |--------|------|------|-----------|
-| `POST` | `/api/v1/Authentication/register` | ✅ | Cria conta de usuário |
-| `POST` | `/api/v1/Authentication/login` | ✅ | Autentica e retorna access + refresh token |
-| `POST` | `/api/v1/Authentication/refresh` | ✅ | Renova o access token via refresh token |
-| `DELETE` | `/api/v1/Authentication/logout` | ✅ Bearer | Revoga o refresh token |
+| `POST` | `/api/v1/Authentication/register` | Não | Cria conta de usuário |
+| `POST` | `/api/v1/Authentication/login` | Não | Autentica e retorna access + refresh token |
+| `POST` | `/api/v1/Authentication/refresh` | Não | Renova o access token via refresh token |
+| `DELETE` | `/api/v1/Authentication/logout` | Bearer | Revoga o refresh token |
+
+Mais detalhes: [`Finance_Project.Authentication.api/README.md`](Finance_Project.Authentication.api/README.md)
 
 ---
 
@@ -127,11 +129,26 @@ Cada serviço expõe:
 
 ---
 
+## Portas
+
+| Serviço | HTTPS | HTTP |
+|---------|-------|------|
+| API Gateway | `65000` | `65001` |
+| Auth API | `65002` | `65003` |
+| Cards API | `65006` | `65007` |
+| Transactions API | `65010` | `65011` |
+
+---
+
 ## Executando localmente
 
-Cada serviço é independente e possui seu próprio `.sln`.
+Cada serviço é independente e possui seu próprio `.slnx`.
 
 ```bash
+# Auth API
+cd Finance_Project.Authentication.api/src/Auth.Api
+dotnet run
+
 # Cards API
 cd Finance_Project.Cards.api/src/CardsService.API
 dotnet run
