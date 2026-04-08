@@ -18,8 +18,8 @@ O sistema permite que usuários cadastrem seus cartões e registrem transações
 |---------|--------|---------------------|
 | Auth API | ✅ Funcional | Repositório separado |
 | Cards API | ✅ Funcional | `Finance_Project.Cards.api/` |
-| Transactions API | 🚧 WIP | — |
-| API Gateway + Circuit Breaker | 🚧 WIP | — |
+| Transactions API | ✅ Funcional | `Finance_Project.Transactions.api/` |
+| API Gateway + Circuit Breaker | ✅ Funcional | `Finance_Project.ApiGateway/` |
 
 ---
 
@@ -82,27 +82,37 @@ Mais detalhes: [`Finance_Project.Cards.api/README.md`](Finance_Project.Cards.api
 
 ---
 
-## Transactions API — 🚧 WIP
+## Transactions API
 
-> Não implementada ainda.
+> `Finance_Project.Transactions.api/` — funcional.
 
-Registrará as transações vinculadas a um cartão.
+Gerencia as transações de cartão de crédito, com suporte a parcelamento e cobranças recorrentes.
 
 | Método | Rota | Descrição |
 |--------|------|-----------|
-| `GET` | `/api/transactions` | Lista transações do usuário |
-| `GET` | `/api/transactions/{id}` | Retorna uma transação pelo ID |
-| `POST` | `/api/transactions` | Registra nova transação |
-| `PUT` | `/api/transactions/{id}` | Atualiza uma transação |
-| `DELETE` | `/api/transactions/{id}` | Remove uma transação |
+| `GET` | `/api/transactions` | Lista transações com filtros (paginado) |
+| `GET` | `/api/transactions/{cardId}/{transactionId}` | Retorna uma transação pelo ID |
+| `POST` | `/api/transactions/{cardId}` | Registra nova transação |
+| `PUT` | `/api/transactions/{cardId}/{transactionId}` | Atualiza uma transação (partial update) |
+| `DELETE` | `/api/transactions/{cardId}/{transactionId}` | Remove a transação permanentemente |
+
+Mais detalhes: [`Finance_Project.Transactions.api/README.md`](Finance_Project.Transactions.api/README.md)
 
 ---
 
-## API Gateway + Circuit Breaker — 🚧 WIP
+## API Gateway + Circuit Breaker
 
-> Não implementado ainda.
+> `Finance_Project.ApiGateway/` — funcional.
 
-Ponto de entrada único. Roteará as requisições para Cards API e Transactions API, aplicando Circuit Breaker via Polly v8 para isolar falhas entre serviços.
+Ponto de entrada único do sistema. Reverse proxy via YARP que roteia requisições para Cards API, Transactions API e Auth API, aplicando Circuit Breaker via Polly v8 para isolar falhas entre serviços.
+
+| Rota | Serviço destino | Auth |
+|------|----------------|------|
+| `/api/cards/{**catch-all}` | Cards API | Bearer |
+| `/api/transactions/{**catch-all}` | Transactions API | Bearer |
+| `/api/v1/Authentication/{**catch-all}` | Auth API | Anônimo |
+
+Mais detalhes: [`Finance_Project.ApiGateway/README.md`](Finance_Project.ApiGateway/README.md)
 
 ---
 
